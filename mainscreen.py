@@ -11,7 +11,7 @@ def showScreen():
     for method in methods:
         print("\t{0}. {1}".format(index, method.name))
         index += 1
-    print("\n")
+    
     choice = int(input("Please enter a choice --> "))
     methods[choice-1].call()
 
