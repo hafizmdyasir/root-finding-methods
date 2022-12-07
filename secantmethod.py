@@ -12,7 +12,14 @@ def secantMethod():
     maxIterations = int(input("Enter maximum number of iterations: "))
     accuracy = float(input("Enter the desired tolerance: "))
     x0 = float(input("Enter the first point x0: "))
-    x1 = float(input("Enter the second point x: "))
+    x1 = float(input("Enter the second point x1: "))
+
+    if x1 == x0:
+        print("The two points must not be the same! Press enter to continue...")
+        delay = input()
+        return False
+    elif x1 > x0:
+        x0, x1 = x1, x0
 
     count = 0
     fxi = 0.0
@@ -26,13 +33,13 @@ def secantMethod():
         xi = ((x0 * fx1) - (x1 * fx0)) / (fx1 - fx0)
         fxi = expression(xi)
         
-        print("{0}\t{1:.8f}\t{2:.8f}\t{3:.8f}\t{4}".format(count+1, x1, x0, xi, fxi))
+        print("{0}\t{1:.8f}\t{2:.8f}\t{3:.8f}\t{4:.8f}".format(count+1, x1, x0, xi, fxi))
 
         x0 = x1
         x1 = xi
         count += 1
 
-        if (abs(fxi) < accuracy) or (count > maxIterations):
+        if (abs(fxi) < accuracy) or (count >= maxIterations):
             break
         
     print("\nAfter {0} iterations, the root of the given equation is\n   x = {1}\nf(x) = {2}\n\n".format(count, xi, fxi))

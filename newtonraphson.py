@@ -22,12 +22,12 @@ def newtonRaphson():
     while True:
         x1 = x0 - (expression(x0) / derivative(x0))
         fx1 = expression(x1)
-        print("{0}\t{1:.8f}\t{2:.8f}\t{3}".format(count+1, x0, x1, fx1))
+        print("{0}\t{1:.8f}\t{2:.8f}\t{3:.8f}".format(count+1, x0, x1, fx1))
 
         x0 = x1
         count += 1
 
-        if (abs(fx1) < accuracy) or (count > maxIterations):
+        if (abs(fx1) < accuracy) or (count >= maxIterations):
             break
         
     print("\nAfter {0} iterations, the root of the given equation is\n   x = {1}\nf(x) = {2}\n\n".format(count, x1, fx1))

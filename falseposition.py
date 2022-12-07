@@ -27,7 +27,7 @@ def regulaFalsi():
     while True:
         x3 = x1 - ((x2 - x1) * expression(x1)) / (expression(x2) - expression(x1))
         fx3 = expression(x3)
-        print("{0}\t{1:.8f}\t{2:.8f}\t{3:.8f}\t{4}".format(count+1, x1, x2, x3, fx3))
+        print("{0}\t{1:.8f}\t{2:.8f}\t{3:.8f}\t{4:.8f}".format(count+1, x1, x2, x3, fx3))
 
         if expression(x1) * fx3 < 0:
             x2 = x3
@@ -35,7 +35,7 @@ def regulaFalsi():
             x1 = x3
         count += 1
 
-        if (abs(fx3) < accuracy) or (count > maxIterations):
+        if (abs(fx3) < accuracy) or (count >= maxIterations):
             break
         
     print("\nAfter {0} iterations, the root of the given equation is\n   x = {1}\nf(x) = {2}\n\n".format(count, x3, fx3))
