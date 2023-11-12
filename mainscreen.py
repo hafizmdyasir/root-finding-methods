@@ -9,10 +9,10 @@ def showScreen():
     print("\nThe following root finding methods are supported:")
     index = 1
     for method in methods:
-        print("\t{0}. {1}".format(index, method.name))
+        print(f"\t{index}. {method.name}")
         index += 1
     
-    choice = int(input("Please enter a choice --> "))
+    choice = int(input("Please enter a choice: "))
     methods[choice-1].call()
 
 

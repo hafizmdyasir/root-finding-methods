@@ -1,14 +1,34 @@
+###########################################
+'''
+File Name: bisection.py
+Author: Mohammad Yasir
+
+Module to perform root-finding calculation via the bisection method.
+'''
+###########################################
+
+
+
 from sympy import symbols, lambdify
 import math
 
 
 def bisection():
+    '''
+    The bisection() method does exactly what it sounds like. 
+
+    Returns:
+        True: If the calculations were successful. OR
+        False: If the calculations did not succeed. For instnace, illegal inputs lead to a False result. Note that the function returns True even if convergence is not achieved.
+    '''
     print("\n")
     
+    # Set up the function that must be solved.
     x = symbols('x')
     functionString = str(input("Enter the function in the form \'x**3 - 5*x - 9\': "))
     expression = lambdify(x, functionString, "math")
 
+    # Necessary inputs.
     maxIterations = int(input("Enter maximum number of iterations: "))
     accuracy = float(input("Enter the desired tolerance: "))
     x1 = float(input("Enter the first guess: "))
@@ -23,6 +43,7 @@ def bisection():
     fx3 = 0.0
     x3 = 0.0
 
+    # Print headers
     print("\nS. No.\tx1\t\tx2\t\tx3\t\tf(x3)")
     while True:
         x3 = (x1 + x2) / 2
@@ -38,5 +59,5 @@ def bisection():
         if (abs(fx3) < accuracy) or (count >= maxIterations):
             break
         
-    print("\nAfter {0} iterations, the root of the given equation is\n   x = {1}\nf(x) = {2}\n\n".format(count, x3, fx3))
+    print(f"After {count} iterations, the root of the given equation is\n   x = {x3}\nf(x) = {fx3}\n\n")
     return True
